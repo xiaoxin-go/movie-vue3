@@ -1,7 +1,7 @@
 <template>
-  <carousel autoplay="2000" transition="800" :wrap-around="true">
-    <slide v-for="item in source" :key="item.id" @click="router.push(`/film/${item.id}`)">
-      <img style="width: 100%;height:100%; border-radius: 5px" :src="`${APIUri.server}/static/${item.name}.jpg`"
+  <carousel autoplay="20000" transition="800" :wrap-around="true">
+    <slide v-for="item in source" :key="item.id" @click="router.push(`/${path}/film/${item.id}`)">
+      <img style="border-radius: 5px" :src="`${APIUri.server}/static/images/${item.name}.jpg`"
            :alt="item.title">
       <span class="carousel-title">{{item.title}}</span>
     </slide>
@@ -24,6 +24,10 @@ const props = defineProps({
   source: {
     type: Array,
     default: () => []
+  },
+  path: {
+    type: String,
+    default: ""
   }
 })
 

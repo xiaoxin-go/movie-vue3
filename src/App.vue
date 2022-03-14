@@ -1,9 +1,17 @@
 <template>
-  <Nav></Nav>
+  <Nav v-if="clientWidth<500"></Nav>
+  <PcNav v-else></PcNav>
 </template>
 
 <script lang="ts" setup>
-import Nav from "@/components/Nav.vue"
+import Nav from "@/components/WapNav.vue"
+import PcNav from "@/components/PcNav.vue"
+import {computed} from "vue"
+
+const clientWidth = computed(()=>{
+  return document.body.clientWidth
+})
+
 </script>
 
 <style>
@@ -16,6 +24,7 @@ html{
 }
 body{
   height: 100%;
+  background: black;
 }
 ul, li{
   list-style: none;
@@ -27,18 +36,5 @@ ul, li{
   text-align: center;
   color: #2c3e50;
   height: 100%;
-}
-
-#nav {
-  padding: 30px;
-}
-
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
-
-#nav a.router-link-exact-active {
-  color: #42b983;
 }
 </style>

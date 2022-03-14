@@ -1,11 +1,11 @@
 <template>
   <div style="position: fixed;top: 60px"> {{bottom}}</div>
   <div style="margin: 5px 10px 0 10px">
-    <FilmCarousel :source="CarouselList"></FilmCarousel>
+    <FilmCarousel :source="CarouselList" path="wap"></FilmCarousel>
   </div>
   <div class="wrapper">
     <div class="film-body" ref="leftScroll">
-      <div class="film-item" v-for="item in filmList" :key="item" @click="router.push(`/film/${item.id}`)">
+      <div class="film-item" v-for="item in filmList" :key="item" @click="router.push(`/wap/film/${item.id}`)">
         <img :src="`${APIUri.server}/static/${item.name}.jpg`" />
         <div class="film-info">
           <div>{{item.name}}/{{item.release_date.split("T")[0]}}</div>
@@ -17,7 +17,7 @@
 </template>
 
 <script lang="ts" setup>
-import FilmCarousel from "@/views/FilmCarousel.vue";
+import FilmCarousel from "@/components/FilmCarousel.vue";
 import {APIUri, list} from "@/api";
 import {onMounted, reactive, ref} from "vue";
 import {useRouter} from "vue-router";

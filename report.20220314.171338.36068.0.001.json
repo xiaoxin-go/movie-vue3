@@ -1,0 +1,286 @@
+
+{
+  "header": {
+    "event": "Allocation failed - JavaScript heap out of memory",
+    "trigger": "FatalError",
+    "filename": "report.20220314.171338.36068.0.001.json",
+    "dumpEventTime": "2022-03-14T17:13:38Z",
+    "processId": 36068,
+    "commandLine": [
+      "D:\\software\\nodejs\\node.exe",
+      "D:\\software\\apps\\WebStorm\\ch-0\\213.6777.57\\plugins\\JavaScriptLanguage\\jsLanguageServicesImpl\\js-language-service.js",
+      "-id=1646958661934",
+      "-debug-name=eslint"
+    ],
+    "nodejsVersion": "v11.13.0",
+    "wordSize": 64,
+    "arch": "x64",
+    "platform": "win32",
+    "componentVersions": {
+      "node": "11.13.0",
+      "v8": "7.0.276.38-node.18",
+      "uv": "1.27.0",
+      "zlib": "1.2.11",
+      "brotli": "1.0.7",
+      "ares": "1.15.0",
+      "modules": "67",
+      "nghttp2": "1.34.0",
+      "napi": "4",
+      "llhttp": "1.1.1",
+      "http_parser": "2.8.0",
+      "openssl": "1.1.1b",
+      "cldr": "34.0",
+      "icu": "63.1",
+      "tz": "2018e",
+      "unicode": "11.0"
+    },
+    "release": {
+      "name": "node",
+      "headersUrl": "https://nodejs.org/download/release/v11.13.0/node-v11.13.0-headers.tar.gz",
+      "sourceUrl": "https://nodejs.org/download/release/v11.13.0/node-v11.13.0.tar.gz",
+      "libUrl": "https://nodejs.org/download/release/v11.13.0/win-x64/node.lib"
+    },
+    "osName": "Windows_NT",
+    "osRelease": "10.0.17134",
+    "osVersion": "Windows 10 Enterprise",
+    "osMachine": "x86_64",
+    "host": "DESKTOP-M0CCQ5F"
+  },
+  "javascriptStack": {
+    "message": "No stack.",
+    "stack": [
+      "Unavailable."
+    ]
+  },
+  "nativeStack": [
+    {
+      "pc": "0x00007ff6ed04cffe",
+      "symbol": "SSL_SESSION_get0_peer+15662"
+    },
+    {
+      "pc": "0x00007ff6ed04bea9",
+      "symbol": "SSL_SESSION_get0_peer+11225"
+    },
+    {
+      "pc": "0x00007ff6ed04b733",
+      "symbol": "SSL_SESSION_get0_peer+9315"
+    },
+    {
+      "pc": "0x00007ff6ed139292",
+      "symbol": "uv_loop_fork+88258"
+    },
+    {
+      "pc": "0x00007ff6ed55fd8e",
+      "symbol": "v8::internal::FatalProcessOutOfMemory+798"
+    },
+    {
+      "pc": "0x00007ff6ed55fcc7",
+      "symbol": "v8::internal::FatalProcessOutOfMemory+599"
+    },
+    {
+      "pc": "0x00007ff6ed6137a4",
+      "symbol": "v8::internal::Heap::RootIsImmortalImmovable+14068"
+    },
+    {
+      "pc": "0x00007ff6ed6095b2",
+      "symbol": "v8::internal::Heap::CollectGarbage+7234"
+    },
+    {
+      "pc": "0x00007ff6ed607dc8",
+      "symbol": "v8::internal::Heap::CollectGarbage+1112"
+    },
+    {
+      "pc": "0x00007ff6ed6116f7",
+      "symbol": "v8::internal::Heap::RootIsImmortalImmovable+5703"
+    },
+    {
+      "pc": "0x00007ff6ed611776",
+      "symbol": "v8::internal::Heap::RootIsImmortalImmovable+5830"
+    },
+    {
+      "pc": "0x00007ff6ed749641",
+      "symbol": "v8::internal::Factory::NewFillerObject+49"
+    },
+    {
+      "pc": "0x00007ff6ed803506",
+      "symbol": "v8::internal::StoreBuffer::StoreBufferOverflow+27190"
+    },
+    {
+      "pc": "0x000002b2fd050481",
+      "symbol": ""
+    }
+  ],
+  "javascriptHeap": {
+    "totalMemory": 1498931200,
+    "totalCommittedMemory": 1498931200,
+    "usedMemory": 1409363688,
+    "availableMemory": 32670288,
+    "memoryLimit": 1526909922,
+    "heapSpaces": {
+      "read_only_space": {
+        "memorySize": 524288,
+        "committedMemory": 524288,
+        "capacity": 515584,
+        "used": 33520,
+        "available": 482064
+      },
+      "new_space": {
+        "memorySize": 4194304,
+        "committedMemory": 4194304,
+        "capacity": 2062336,
+        "used": 151000,
+        "available": 1911336
+      },
+      "old_space": {
+        "memorySize": 1459294208,
+        "committedMemory": 1459294208,
+        "capacity": 1379985824,
+        "used": 1377208968,
+        "available": 2776856
+      },
+      "code_space": {
+        "memorySize": 5767168,
+        "committedMemory": 5767168,
+        "capacity": 4744672,
+        "used": 4744672,
+        "available": 0
+      },
+      "map_space": {
+        "memorySize": 3158016,
+        "committedMemory": 3158016,
+        "capacity": 2639200,
+        "used": 2639200,
+        "available": 0
+      },
+      "large_object_space": {
+        "memorySize": 25993216,
+        "committedMemory": 25993216,
+        "capacity": 52086360,
+        "used": 24586328,
+        "available": 27500032
+      },
+      "new_large_object_space": {
+        "memorySize": 0,
+        "committedMemory": 0,
+        "capacity": 0,
+        "used": 0,
+        "available": 0
+      }
+    }
+  },
+  "resourceUsage": {
+    "userCpuSeconds": 282.671,
+    "kernelCpuSeconds": 42.406,
+    "cpuConsumptionPercent": 0.111881,
+    "maxRss": 1525551104,
+    "pageFaults": {
+      "IORequired": 3865064,
+      "IONotRequired": 0
+    },
+    "fsActivity": {
+      "reads": 17925,
+      "writes": 6590
+    }
+  },
+  "libuv": [
+  ],
+  "environmentVariables": {
+    "=C:": "C:\\",
+    "ALLUSERSPROFILE": "C:\\ProgramData",
+    "ANDROID_HOME": "D:\\software\\android-sdk",
+    "APPDATA": "C:\\Users\\xiaoxin\\AppData\\Roaming",
+    "COLORTERM": "true",
+    "CommonProgramFiles": "C:\\Program Files\\Common Files",
+    "CommonProgramFiles(x86)": "C:\\Program Files (x86)\\Common Files",
+    "CommonProgramW6432": "C:\\Program Files\\Common Files",
+    "COMPUTERNAME": "DESKTOP-M0CCQ5F",
+    "ComSpec": "C:\\WINDOWS\\system32\\cmd.exe",
+    "DEBUG_COLORS": "true",
+    "DriverData": "C:\\Windows\\System32\\Drivers\\DriverData",
+    "FORCE_COLOR": "true",
+    "GO111MODULE": "on",
+    "GOBIN": "D:\\software\\GO\\bin",
+    "GOPATH": "C:\\Users\\xiaoxin\\go",
+    "GOPROXY": "https://goproxy.cn",
+    "HOMEDRIVE": "C:",
+    "HOMEPATH": "\\Users\\xiaoxin",
+    "IDEA_INITIAL_DIRECTORY": "D:\\software\\apps\\WebStorm\\ch-0\\213.6777.57\\bin",
+    "JAVA_HOME": "C:\\Java\\jdk1.8.0_211",
+    "LOCALAPPDATA": "C:\\Users\\xiaoxin\\AppData\\Local",
+    "LOGONSERVER": "\\\\DESKTOP-M0CCQ5F",
+    "MOCHA_COLORS": "1",
+    "npm_config_color": "always",
+    "NUMBER_OF_PROCESSORS": "8",
+    "OneDrive": "C:\\Users\\xiaoxin\\OneDrive",
+    "OS": "Windows_NT",
+    "Path": "D:\\Miniconda3;D:\\Miniconda3\\Library\\mingw-w64\\bin;D:\\Miniconda3\\Library\\usr\\bin;D:\\Miniconda3\\Library\\bin;D:\\Miniconda3\\Scripts;C:\\Program Files (x86)\\Common Files\\Oracle\\Java\\javapath;C:\\WINDOWS\\system32;C:\\WINDOWS;C:\\WINDOWS\\System32\\Wbem;C:\\WINDOWS\\System32\\WindowsPowerShell\\v1.0\\;D:\\software\\python3\\Scripts;D:\\software\\python3;D:\\software\\nodejs;d:\\software\\Git\\cmd;C:\\Program Files\\Redis\\;C:\\Users\\xiaoxin\\AppData\\Roaming\\npm;C:\\Program Files\\MySQL\\MySQL Server 5.7\\bin;C:\\WINDOWS\\System32\\OpenSSH\\;D:\\software\\Google\\Chrome\\Application;D:\\zookeeper-3.4.14\\conf\\bin;C:\\Go\\bin;C:\\Python37-32\\Scripts\\;C:\\Python37-32\\;C:\\Users\\xiaoxin\\AppData\\Local\\Microsoft\\WindowsApps;C:\\Users\\xiaoxin\\go\\bin;C:\\Users\\xiaoxin\\AppData\\Local\\BypassRuntm;%GoLand%;C:\\Users\\xiaoxin\\AppData\\Local\\Microsoft\\WindowsApps;D:\\software\\Microsoft VS Code\\bin;D:\\zookeeper-3.4.14\\bin;C:\\Java\\jdk1.8.0_211\\bin;C:\\Program Files (x86)\\mingw-w64\\i686-8.1.0-posix-dwarf-rt_v6-rev0\\mingw32\\bin;D:\\Program Files\\MongoDB\\Server\\4.2\\bin;C:\\Program Files\\Java\\jre1.8.0_211\\bin;D:\\software\\nsq\\bin;D:\\software\\protoc\\bin;D:\\software\\kafka_2.12-2.5.0\\bin\\windows;C:\\Users\\xiaoxin\\go\\bin;D:\\mod\\micro;D:\\software\\elasticsearch-7.7.0-windows-x86_64\\elasticsearch-7.7.0\\bin;D:\\software\\elasticsearch-7.7.0-windows-x86_64\\elasticsearch-7.7.0\\kibana-7.7.0-windows-x86_64\\bin;D:\\software\\Go\\bin;D:\\software\\etcd-v3.4.9-windows-amd64;C:\\Program Files\\OpenSSL-Win64\\bin;D:\\Program Files (x86)\\mingw64\\bin;D:\\software\\android-sdk\\platform-tools;D:\\software\\android-sdk\\tools;D:\\software\\Nox\\bin;D:\\software\\protoc-3.17.3-win64\\bin;C:\\Program Files\\JetBrains\\W",
+    "PATHEXT": ".COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC",
+    "PKG_CONFIG_PATH": "C:\\Users\\xiaoxin\\Downloads\\pkg-config_0.23-2_win64\\bin",
+    "PROCESSOR_ARCHITECTURE": "AMD64",
+    "PROCESSOR_IDENTIFIER": "Intel64 Family 6 Model 142 Stepping 10, GenuineIntel",
+    "PROCESSOR_LEVEL": "6",
+    "PROCESSOR_REVISION": "8e0a",
+    "ProgramData": "C:\\ProgramData",
+    "ProgramFiles": "C:\\Program Files",
+    "ProgramFiles(x86)": "C:\\Program Files (x86)",
+    "ProgramW6432": "C:\\Program Files",
+    "PSModulePath": "%ProgramFiles%\\WindowsPowerShell\\Modules;C:\\WINDOWS\\system32\\WindowsPowerShell\\v1.0\\Modules",
+    "PUBLIC": "C:\\Users\\Public",
+    "PyCharm Community Edition": "d:\\Program Files\\JetBrains\\PyCharm Community Edition 2021.2.3\\bin;",
+    "SESSIONNAME": "Console",
+    "SystemDrive": "C:",
+    "SystemRoot": "C:\\WINDOWS",
+    "TEMP": "C:\\Users\\xiaoxin\\AppData\\Local\\Temp",
+    "TMP": "C:\\Users\\xiaoxin\\AppData\\Local\\Temp",
+    "TOOLBOX_VERSION": "1.22.10970",
+    "USERDOMAIN": "DESKTOP-M0CCQ5F",
+    "USERDOMAIN_ROAMINGPROFILE": "DESKTOP-M0CCQ5F",
+    "USERNAME": "xiaoxin",
+    "USERPROFILE": "C:\\Users\\xiaoxin",
+    "WebStorm": "C:\\Program Files\\JetBrains\\WebStorm 2021.3\\bin;",
+    "windir": "C:\\WINDOWS",
+    "ZOOKEEPER_HOME": "D:\\zookeeper-3.4.14"
+  },
+  "sharedObjects": [
+    "D:\\software\\nodejs\\node.exe",
+    "C:\\WINDOWS\\SYSTEM32\\ntdll.dll",
+    "C:\\WINDOWS\\System32\\KERNEL32.DLL",
+    "C:\\WINDOWS\\System32\\KERNELBASE.dll",
+    "C:\\WINDOWS\\System32\\PSAPI.DLL",
+    "C:\\WINDOWS\\System32\\WS2_32.dll",
+    "C:\\WINDOWS\\System32\\RPCRT4.dll",
+    "C:\\WINDOWS\\System32\\ADVAPI32.dll",
+    "C:\\WINDOWS\\System32\\msvcrt.dll",
+    "C:\\WINDOWS\\System32\\sechost.dll",
+    "C:\\WINDOWS\\System32\\USER32.dll",
+    "C:\\WINDOWS\\System32\\win32u.dll",
+    "C:\\WINDOWS\\System32\\GDI32.dll",
+    "C:\\WINDOWS\\System32\\gdi32full.dll",
+    "C:\\WINDOWS\\System32\\msvcp_win.dll",
+    "C:\\WINDOWS\\System32\\ucrtbase.dll",
+    "C:\\WINDOWS\\System32\\CRYPT32.dll",
+    "C:\\WINDOWS\\System32\\MSASN1.dll",
+    "C:\\WINDOWS\\SYSTEM32\\dbghelp.dll",
+    "C:\\WINDOWS\\SYSTEM32\\USERENV.dll",
+    "C:\\WINDOWS\\SYSTEM32\\IPHLPAPI.DLL",
+    "C:\\WINDOWS\\System32\\profapi.dll",
+    "C:\\WINDOWS\\SYSTEM32\\WINMM.dll",
+    "C:\\WINDOWS\\SYSTEM32\\bcrypt.dll",
+    "C:\\WINDOWS\\SYSTEM32\\WINMMBASE.dll",
+    "C:\\WINDOWS\\System32\\cfgmgr32.dll",
+    "C:\\WINDOWS\\System32\\IMM32.DLL",
+    "C:\\WINDOWS\\System32\\powrprof.dll",
+    "C:\\WINDOWS\\system32\\uxtheme.dll",
+    "C:\\WINDOWS\\System32\\combase.dll",
+    "C:\\WINDOWS\\System32\\bcryptPrimitives.dll",
+    "C:\\WINDOWS\\system32\\mswsock.dll",
+    "C:\\WINDOWS\\System32\\kernel.appcore.dll",
+    "C:\\WINDOWS\\system32\\napinsp.dll",
+    "C:\\WINDOWS\\system32\\pnrpnsp.dll",
+    "C:\\WINDOWS\\system32\\NLAapi.dll",
+    "C:\\WINDOWS\\SYSTEM32\\DNSAPI.dll",
+    "C:\\WINDOWS\\System32\\NSI.dll",
+    "C:\\WINDOWS\\System32\\winrnr.dll",
+    "C:\\WINDOWS\\System32\\wshbth.dll"
+  ]
+}

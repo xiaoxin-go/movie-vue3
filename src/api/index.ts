@@ -2,7 +2,7 @@ import axios, {AxiosPromise, AxiosResponse} from 'axios'
 
 
 export const APIUri = {
-    server: "http://192.168.0.102",
+    server: "http://192.168.253.77",
     port: "8030",
     film: "/film",
     filmInfo: "/film/:id",

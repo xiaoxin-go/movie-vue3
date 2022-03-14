@@ -21,7 +21,7 @@ const activeNav = ref("电影")
 
 const clickNavLi = (nav: { title: string, url: string }) => {
   activeNav.value = nav.title
-  router.push(nav.url)
+  router.push("/wap" + nav.url)
 }
 
 const navList = [
@@ -37,7 +37,7 @@ const navList = [
 #header {
   height: 50px;
   line-height: 50px;
-  background: #804d8a;
+  background-color: rgba(25, 26, 32, .8);
   border-radius: 4px;
   position: fixed;
   top: 0;
@@ -67,6 +67,7 @@ const navList = [
 }
 
 #body {
+  margin: 0 auto;
   padding-top: 50px;
 }
 </style>
