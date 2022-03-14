@@ -1,0 +1,72 @@
+<template>
+  <div id="header">
+    <ul>
+      <li :class="activeNav === nav.title?'active':''" v-for="nav in navList" :key="nav.title" @click="clickNavLi(nav)">
+        {{ nav.title }}
+      </li>
+    </ul>
+  </div>
+  <div id="body">
+    <router-view/>
+  </div>
+</template>
+
+<script lang="ts" setup>
+import {useRouter} from "vue-router";
+import {ref} from "vue";
+
+const router = useRouter()
+
+const activeNav = ref("电影")
+
+const clickNavLi = (nav: { title: string, url: string }) => {
+  activeNav.value = nav.title
+  router.push(nav.url)
+}
+
+const navList = [
+  {title: "电影", url: "/film"},
+  {title: "演员", url: "/actress"},
+  {title: "类别", url: "/genre"},
+  {title: "收藏", url: "/favorite"},
+  {title: "我的", url: "/user"},
+]
+</script>
+
+<style scoped>
+#header {
+  height: 50px;
+  line-height: 50px;
+  background: #804d8a;
+  border-radius: 4px;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 100;
+}
+
+#header > ul {
+  width: 100%;
+}
+
+#header > ul > li {
+  font-size: 16px;
+  display: inline-block;
+  width: 19%;
+  color: #fefefe;
+}
+
+#header > ul > li:hover {
+
+}
+
+#header .active {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+}
+
+#body {
+  padding-top: 50px;
+}
+</style>
