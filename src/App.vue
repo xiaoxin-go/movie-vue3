@@ -1,10 +1,10 @@
 <template>
-  <Nav v-if="clientWidth<500"></Nav>
+  <WapNav v-if="clientWidth<500"></WapNav>
   <PcNav v-else></PcNav>
 </template>
 
 <script lang="ts" setup>
-import Nav from "@/components/WapNav.vue"
+import WapNav from "@/components/WapNav.vue"
 import PcNav from "@/components/PcNav.vue"
 import {computed} from "vue"
 

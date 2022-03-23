@@ -7,13 +7,15 @@
     </ul>
   </div>
   <div id="body">
-    <router-view/>
+    <router-view :key="$route.fullPath"/>
+
   </div>
+  <div style="position: fixed;bottom: 200px; color: #fff;font-size: 18px;z-index: 1000"> {{bottom}}</div>
 </template>
 
 <script lang="ts" setup>
 import {useRouter} from "vue-router";
-import {ref} from "vue";
+import {ref, onMounted} from "vue";
 
 const router = useRouter()
 
@@ -31,6 +33,26 @@ const navList = [
   {title: "收藏", url: "/favorite"},
   {title: "我的", url: "/user"},
 ]
+
+import store from "@/store";
+
+const bottom = ref();
+
+const handleScroll = () => {
+  const scrollHeight = document.body.scrollHeight
+  const clientHeight = document.body.clientHeight
+  const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
+  const distance = scrollHeight - scrollTop - clientHeight;
+  bottom.value = distance
+  if(distance < 120){
+    store.state.scroll = !store.state.scroll
+  }
+}
+
+onMounted(() => {
+  window.addEventListener("scroll", handleScroll, false);
+})
+
 </script>
 
 <style scoped>

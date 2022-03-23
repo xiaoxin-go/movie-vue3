@@ -1,7 +1,7 @@
 <template>
-  <carousel autoplay="20000" transition="800" :wrap-around="true">
+  <carousel autoplay="3000" transition="800" :wrap-around="true">
     <slide v-for="item in source" :key="item.id" @click="router.push(`/${path}/film/${item.id}`)">
-      <img style="border-radius: 5px" :src="`${APIUri.server}/static/images/${item.name}.jpg`"
+      <img style="height: 100%;width: 100%" :src="`${ImagePath}/${item.name}.jpg`"
            :alt="item.title">
       <span class="carousel-title">{{item.title}}</span>
     </slide>
@@ -16,7 +16,7 @@ import "vue3-carousel/dist/carousel.css"
 import {Carousel, Slide, Pagination, Navigation} from "vue3-carousel";
 import {defineProps} from "vue";
 import {useRouter} from "vue-router";
-import {APIUri} from "@/api";
+import {ImagePath} from "@/api";
 
 const router = useRouter()
 

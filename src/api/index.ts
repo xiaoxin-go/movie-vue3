@@ -2,15 +2,27 @@ import axios, {AxiosPromise, AxiosResponse} from 'axios'
 
 
 export const APIUri = {
-    server: "http://192.168.253.77",
+    server: "http://192.168.0.102",
     port: "8030",
     film: "/film",
     filmInfo: "/film/:id",
     filmImage: "/film/image",
     filmLink: "/film/link",
+    filmLike: "/film/:id/like",
+    filmCover: "/film/:id/cover",
+
     actress: "/actress",
     actressInfo: "/actress/:id",
+    actressFilm: "/actress/:id/film",
+    actressFilms: "/actress/:id/films",
+
+    genre: "/genre",
+    genreInfo: "/genre/:id",
+    genreFilm: "/genre/:id/film",
 }
+
+export const ImagePath = `${APIUri.server}/static/images`
+export const FilmPath = `${APIUri.server}/static/movies`
 
 axios.defaults.baseURL = APIUri.server + ":" + APIUri.port
 axios.interceptors.response.use((res: AxiosResponse) => {
@@ -50,6 +62,6 @@ export const post = (uri: string, data: any): AxiosPromise => {
 export const put = (uri: string, data: any): AxiosPromise => {
   return axios.put(uri, data)
 }
-export const del = (uri: string, id: number): AxiosPromise => {
+export const del = (uri: string, id: any): AxiosPromise => {
   return axios.delete(`${uri}/${id}`)
 }
