@@ -44,7 +44,7 @@ const handleScroll = () => {
   const scrollTop = window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop
   const distance = scrollHeight - scrollTop - clientHeight;
   bottom.value = distance
-  if(distance < 120){
+  if(distance < 200){
     store.state.scroll = !store.state.scroll
   }
 }

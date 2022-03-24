@@ -1,12 +1,21 @@
 <template>
-  <div class="actress-info">
-    <span>{{data?.name}}</span>
-    <span>{{data?.height}}</span>
-    <span>{{data?.cup}}</span>
-    <span>{{data?.birthday}}</span>
-    <span class="del" @click="remove" style="color: red">del</span>
-    <span class="add" @click="addFilms" style="color: greenyellow">+</span>
+  <div class="actress">
+    <div class="actress-img">
+      <img :src="`${ImagePath}/${data?.image}.jpg`" alt="">
+    </div>
+    <div class="actress-info">
+      <p style="font-size: 14px">{{data?.name}}</p>
+      <p v-if="data?.height !== ''">身高: {{data?.height}}</p>
+      <p v-if="data?.cup !== ''">Cup: {{data?.cup}}</p>
+      <p v-if="data?.birthday !== ''">生日: {{data?.birthday}}</p>
+      <p v-if="data?.age !== ''">年龄: {{data?.age}}</p>
+      <p class="operator">
+        <button class="add" @click="addFilms">+</button>
+        <button class="del" @click="remove">-</button>
+      </p>
+    </div>
   </div>
+
   <div>
     <div class="film-item" v-for="film in filmList" :key="film.id" @click="router.push(`/wap/film/${film.id}`)" >
       <div>
@@ -85,6 +94,34 @@ watch(() => store.state.scroll, (value) => {
 </script>
 
 <style scoped>
+.actress{
+  background: #fff;
+  padding: 5px;
+  margin: 10px;
+  text-align: left;
+}
+.actress-info{
+  display: inline-block;
+  vertical-align: top;
+  margin-left: 10px;
+  font-size: 12px;
+}
+.actress-info>p{
+  height: 25px;
+  line-height: 25px;
+}
+.actress-img{
+  height: 200px;
+  width: 210px;
+  display: inline-block;
+  overflow: hidden;
+  border-right: 1px solid #ccc;
+}
+.actress-img>img{
+  position: relative;
+  right: 226px;
+  height: 290px;
+}
 .film-item {
   display: inline-block;
   width: 31%;
@@ -117,14 +154,19 @@ watch(() => store.state.scroll, (value) => {
 .film-info>p{
   white-space: nowrap;
 }
-.actress-info{
-  color: #fc4dab;
-  height: 40px;
-  line-height: 40px;
-  text-align: left;
-  padding: 0 10px;
+.operator>button{
+  height: 18px;
+  width: 30px;
+  line-height: 18px;
+  border: none;
+  margin-right: 10px;
+  color: #fefefe;
+  border-radius: 2px;
 }
-.actress-info>span{
-  margin: 0 6px;
+.operator>.add{
+  background: greenyellow;
+}
+.operator>.del{
+  background: red;
 }
 </style>

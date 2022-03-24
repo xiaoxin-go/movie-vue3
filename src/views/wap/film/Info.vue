@@ -22,8 +22,8 @@
     <div class="genre">
       类型:
       <span v-for="item in data.genres" :key="item.id" @click="router.push(`/wap/genre/${item.id}`)">{{item.name}}</span>
-      <span @click="remove" style="color: red">del</span>
-      <span @click="cover" style="color: antiquewhite">cover</span>
+      <button class="del" @click="remove">del</button>
+      <button class="cover" @click="cover">cover</button>
     </div>
   </div>
   <FilmInfoImage :film-id="route.params.id"></FilmInfoImage>
@@ -124,6 +124,9 @@ const onCanplay = (ev) => {
   font-size: 12px;
   color: #fff;
 }
+.info>div{
+  margin: 5px 0;
+}
 .genre>span, .actress>span{
   margin: 0 6px;
 }
@@ -132,5 +135,19 @@ const onCanplay = (ev) => {
 }
 .genre>span{
 
+}
+.cover, .del{
+  border: none;
+  border-radius: 1px;
+  padding: 2px 5px;
+  color: #fff;
+  margin: 0 5px;
+  font-size: 12px;
+}
+.cover{
+  background: cadetblue;
+}
+.del{
+  background: red;
 }
 </style>
