@@ -24,8 +24,8 @@ const {data:filmList} = useRequest(list, {
   formatResult: res=>res.data.data_list
 })
 
-const toFilm = (filmId) => {
-  router.push(`/wap/film/${filmId}`)
+const toFilm = (filmId:any) => {
+  router.push(`/pc/film/${filmId}?` + Math.random())
 }
 
 </script>
@@ -36,16 +36,16 @@ const toFilm = (filmId) => {
 }
 .film-item {
   display: inline-block;
-  width: 31%;
-  margin: 2px;
+  width: 182px;
+  margin: 5px;
   overflow: hidden;
   background: rgba(255, 255, 255);
   box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
-  border: 2px solid #fff;
+  border: 4px solid #fff;
 }
 
 .film-img {
-  height: 162px;
+  height: 256px;
 }
 .film-img>img{
   height: 100%;

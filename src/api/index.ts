@@ -2,7 +2,7 @@ import axios, {AxiosPromise, AxiosResponse} from 'axios'
 
 
 export const APIUri = {
-    server: "http://192.168.0.102",
+    server: "http://192.168.0.105",
     port: "8030",
     film: "/film",
     filmInfo: "/film/:id",
@@ -10,6 +10,13 @@ export const APIUri = {
     filmLink: "/film/link",
     filmLike: "/film/:id/like",
     filmCover: "/film/:id/cover",
+    addFilmLink: "/film/:id/link",
+    addFilmImage: "/film/:id/image",
+    saveFilmImage: "/film/:id/image",
+    isPlayer: "/film/:id/isplayer",
+    isCollect: "/film/:id/isCollect",
+    collect: "/film/:id/collect",
+    unCollect: "/film/:id/uncollect",
 
     actress: "/actress",
     actressInfo: "/actress/:id",
@@ -22,6 +29,7 @@ export const APIUri = {
 }
 
 export const ImagePath = `${APIUri.server}/static/images`
+export const LogoPath = `${APIUri.server}/static/logo`
 export const FilmPath = `${APIUri.server}/static/movies`
 
 axios.defaults.baseURL = APIUri.server + ":" + APIUri.port

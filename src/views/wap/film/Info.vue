@@ -13,7 +13,10 @@
       <button>+ 关注</button>
     </div>
     <div>
-      上映日期: <span>{{ data.release_date.split("T")[0] }}</span>
+      上映日期: <span>{{ data?.release_date.split("T")[0] }}</span>
+    </div>
+    <div>
+      时长: <span>{{data?.length}}</span>
     </div>
     <div class="actress">
       演员:

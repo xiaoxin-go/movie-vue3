@@ -8,16 +8,16 @@
   </div>
   <div id="body">
     <router-view :key="$route.fullPath"/>
-
   </div>
   <div style="position: fixed;bottom: 200px; color: #fff;font-size: 18px;z-index: 1000"> {{bottom}}</div>
 </template>
 
 <script lang="ts" setup>
-import {useRouter} from "vue-router";
+import {useRoute, useRouter} from "vue-router";
 import {ref, onMounted} from "vue";
 
 const router = useRouter()
+const route = useRoute()
 
 const activeNav = ref("电影")
 
@@ -91,5 +91,10 @@ onMounted(() => {
 #body {
   margin: 0 auto;
   padding-top: 50px;
+  background: #000000;
+}
+#app{
+  background: beige;
+  overflow: auto;
 }
 </style>

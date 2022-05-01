@@ -2,7 +2,8 @@ import {reactive} from "vue";
 
 const store = reactive({
     state: {
-        scroll: false
+        scroll: false,
+        search: "",
     }
 })
 export default store

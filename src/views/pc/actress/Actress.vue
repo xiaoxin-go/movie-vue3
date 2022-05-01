@@ -1,6 +1,6 @@
 <template>
 <div id="actress">
-  <div class="actress-item" v-for="item in actressList" :key="item.id" @click="router.push(`/wap/actress/${item.id}`)">
+  <div class="actress-item" v-for="item in actressList" :key="item.id" @click="router.push(`/pc/actress/${item.id}`)">
     <div class="item-image">
       <img :src="`${LogoPath}/${item.image}.jpg`" alt="">
     </div>
@@ -9,10 +9,21 @@
     </div>
   </div>
 </div>
+  <div id="pagination">
+    <v-pagination
+        v-model="pagination.page"
+        :pages="pages"
+        :range-size="1"
+        active-color="#DCEDFF"
+        @update:modelValue="updateHandler"
+    />
+  </div>
 </template>
 
 <script lang="ts" setup>
-import {onMounted, reactive, ref, watch} from "vue";
+import {computed, onMounted, reactive, ref, watch} from "vue";
+import VPagination from "@hennge/vue3-pagination";
+import "@hennge/vue3-pagination/dist/vue3-pagination.css";
 import {APIUri, list} from "@/api";
 import store from "@/store";
 import {useRouter} from "vue-router";
@@ -28,24 +39,23 @@ const pagination = reactive({
   total: 0
 })
 
+const pages = computed(()=>{
+  return Math.ceil(pagination.total/pagination.page_size)
+})
+
 const getActress = async() =>{
   let resp = await list(APIUri.actress, pagination);
   pagination.total = resp.data.total
-  resp.data.data_list.map((item: any) => {
-    actressList.value.push(item)
-  })
+  actressList.value = resp.data.data_list
 }
 onMounted(() => {
   getActress()
 })
 
-watch(() => store.state.scroll, (value) => {
-  if (pagination.page * pagination.page_size >= pagination.total) {
-    return
-  }
-  pagination.page += 1
+const updateHandler = (page: any) =>{
+  pagination.page = page
   getActress()
-})
+}
 
 </script>
 
@@ -56,19 +66,30 @@ watch(() => store.state.scroll, (value) => {
 .actress-item{
   display: inline-block;
   background: #fefefe;
-  width: 30%;
+  width: 190px;
   color: #2c3e50;
   margin: 5px;
   box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
   vertical-align: top;
-  font-size: 12px;
+  font-size: 14px;
 }
 .item-image{
-  margin: 3px 3px 0 3px;
+  margin: 5px 5px 0 5px;
   overflow: hidden;
-  height: 120px;
+  height: 200px;
+}
+.item-image:hover{
+  cursor: pointer;
 }
 .item-image>img{
-  height: 170px;
+  height: 258px;
+}
+.actress-info{
+  text-align: center;
+  height: 26px;
+  line-height: 26px;
+}
+#pagination{
+  margin-top: 10px;
 }
 </style>

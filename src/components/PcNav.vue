@@ -8,25 +8,41 @@
           </span>
         </span>
       <span class="search">
+        <input type="text" v-model="keyword">
       </span>
+      <button @click="search" class="search-btn">search</button>
+      <button @click="clickLogin">login</button>
     </div>
   </div>
-  <div id="body">
-    <router-view/>
+  <div style="width: 100%;background: beige">
+    <div id="body">
+      <router-view/>
+    </div>
   </div>
+
 </template>
 
 <script lang="ts" setup>
 import {useRouter} from "vue-router";
+import store from "@/store";
 import {ref} from "vue";
 
 const router = useRouter()
+
+const keyword = ref("")
 
 const activeNav = ref("电影")
 
 const clickNavLi = (nav: { title: string, url: string }) => {
   activeNav.value = nav.title
   router.push("/pc" + nav.url)
+}
+
+const search = () =>{
+  store.state.search = keyword.value
+}
+const clickLogin = () =>{
+  console.log("---")
 }
 
 const navList = [
@@ -63,8 +79,6 @@ const navList = [
   display: -webkit-box;
   display: -ms-flexbox;
   width: 200px;
-  height: 36px;
-  background-color: hsla(0, 0%, 100%, .18);
   border-radius: 4px;
   padding-left: 10px;
 }
@@ -75,14 +89,23 @@ const navList = [
   height: 100%;
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
-  background-color: transparent;
   border: 0;
   outline: 0;
   font-size: 14px;
   padding: 10px 0;
   color: hsla(0, 0%, 100%, .9);
+  background: hsla(0, 0%, 100%, .18);
+  padding-left: 20px;
 }
-
+.search-btn{
+  height: 36px;
+  padding: 0 10px;
+  border: none;
+}
+.search-btn:hover{
+  cursor: pointer;
+  border-radius: 2px;
+}
 .header-menu > span {
   font-size: 16px;
   display: inline-block;
@@ -106,6 +129,7 @@ const navList = [
 #body {
   width: 1200px;
   margin: 0 auto;
-  padding-top: 50px;
+  padding-top: 70px;
+  padding-bottom: 10px;
 }
 </style>
