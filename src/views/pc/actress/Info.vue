@@ -11,6 +11,8 @@
         <p v-if="data?.cup !== ''">Cup: {{data?.cup}}</p>
         <p v-if="data?.birthday !== ''">生日: {{data?.birthday}}</p>
         <p v-if="data?.age !== ''">年龄: {{data?.age}}</p>
+        <button class="follow-btn" v-if="isFollow>0" @click="unFollow">- 取消关注</button>
+        <button class="follow-btn" v-else @click="follow">+ 关注</button>
       </div>
     </div>
     <div class="film-item" v-for="film in filmList" :key="film.id" @click="router.push(`/pc/film/${film.id}`)" >
@@ -52,6 +54,28 @@ const {data} = useRequest(get, {
   defaultParams: [APIUri.actressInfo.replace(":id", route.params.id.toString()), {}],
   formatResult: res => res.data
 })
+
+const {data: isFollow, run: runIsFollow} = useRequest(get, {
+  defaultParams: [APIUri.isFollow.replace(":id", route.params.id.toString()), {}],
+  formatResult: res => res.data
+})
+
+const follow = async () => {
+  let resp = await post(APIUri.follow.replace(":id", route.params.id.toString()), {})
+  console.log(resp)
+  if (resp.code === 200) {
+    alert(resp.message)
+    runIsFollow(APIUri.follow.replace(":id", route.params.id.toString()), {})
+  }
+}
+const unFollow = async () => {
+  let resp = await post(APIUri.unFollow.replace(":id", route.params.id.toString()), {})
+  console.log(resp)
+  if (resp.code === 200) {
+    alert(resp.message)
+    runIsFollow(APIUri.follow.replace(":id", route.params.id.toString()), {})
+  }
+}
 
 const remove = async()=>{
   let resp = await del(APIUri.actress, route.params.id)
@@ -180,5 +204,18 @@ onMounted(() => {
 }
 #pagination{
   margin-top: 10px;
+}
+.follow-btn{
+  float: right;
+  background: #fc4dab;
+  border: none;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin-right: 10px;
+  margin-top: 3px;
+}
+.follow-btn:hover{
+  cursor: pointer;
 }
 </style>

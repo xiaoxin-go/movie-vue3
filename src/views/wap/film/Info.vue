@@ -10,7 +10,8 @@
   <div class="info">
     <div class="title">
       <span>{{ data?.title }}</span>
-      <button>+ 关注</button>
+      <button v-if="!isCollect||isCollect===0" @click="collect">+ 收藏</button>
+      <button v-else @click="unCollect">- 取消收藏</button>
     </div>
     <div>
       上映日期: <span>{{ data?.release_date.split("T")[0] }}</span>
@@ -20,11 +21,11 @@
     </div>
     <div class="actress">
       演员:
-      <span v-for="item in data.actresses" :key="item.id" @click="router.push(`/wap/actress/${item.id}`)">{{item.name}}</span>
+      <span v-for="item in data?.actresses" :key="item.id" @click="router.push(`/wap/actress/${item.id}`)">{{item.name}}</span>
     </div>
     <div class="genre">
       类型:
-      <span v-for="item in data.genres" :key="item.id" @click="router.push(`/wap/genre/${item.id}`)">{{item.name}}</span>
+      <span v-for="item in data?.genres" :key="item.id" @click="router.push(`/wap/genre/${item.id}`)">{{item.name}}</span>
       <button class="del" @click="remove">del</button>
       <button class="cover" @click="cover">cover</button>
     </div>
@@ -65,6 +66,26 @@ const remove = async() =>{
 const cover = async() =>{
   let resp = await post(APIUri.filmCover.replace(":id", route.params.id.toString()), {})
   alert(resp.message)
+}
+const {data: isCollect, run: runIsCollect} = useRequest(get, {
+  defaultParams: [APIUri.isCollect.replace(":id", route.params.id.toString()), {}],
+  formatResult: res => res.data
+})
+const collect = async () => {
+  let resp = await post(APIUri.collect.replace(":id", route.params.id.toString()), {})
+  console.log(resp)
+  if (resp.code === 200) {
+    alert(resp.message)
+    runIsCollect(APIUri.isCollect.replace(":id", route.params.id.toString()), {})
+  }
+}
+const unCollect = async () => {
+  let resp = await post(APIUri.unCollect.replace(":id", route.params.id.toString()), {})
+  console.log(resp)
+  if (resp.code === 200) {
+    alert(resp.message)
+    runIsCollect(APIUri.isCollect.replace(":id", route.params.id.toString()), {})
+  }
 }
 
 const options = computed(() => {

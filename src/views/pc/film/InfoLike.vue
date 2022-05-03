@@ -1,5 +1,5 @@
 <template>
-  <div style="text-align: left;color: #fff; padding-left: 20px">同类影片：</div>
+  <div class="title">同类影片：</div>
   <div class="film">
     <div class="film-item" v-for="film in filmList" :key="film.id" @click="toFilm(film.id)">
       <div class="film-img">
@@ -31,6 +31,13 @@ const toFilm = (filmId:any) => {
 </script>
 
 <style scoped>
+.title{
+  color: #000000;
+  font-weight: bold;
+  font-size: 16px;
+  text-align: left;
+  padding-left: 15px;
+}
 .film{
   margin-top: 5px;
 }

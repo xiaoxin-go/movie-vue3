@@ -1,6 +1,8 @@
 <template>
   <div class="links">
-    磁力:
+    <span class="title">
+      磁力:
+    </span>
     <div class="operator">
       <template v-if="links?.length === 0">
         <button @click="addLink">+ 获取</button>
@@ -49,9 +51,13 @@ const active = ref(false)
 .links{
   margin-top: 10px;
   text-align: left;
-  padding:0 20px;
+  padding:0 15px;
   font-size: 12px;
-  color: #fff;
+  color: #000000;
+}
+.title{
+  font-size: 16px;
+  font-weight: bold;
 }
 .link-item{
   margin-top: 5px;

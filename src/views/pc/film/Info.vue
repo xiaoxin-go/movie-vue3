@@ -27,8 +27,8 @@
               v-for="item in data?.actresses"
               :key="item.id"
               @click="router.push(`/pc/actress/${item.id}`)"
-              @mouseover="actressActive=item.name"
-              @mouseout="actressActive=''"
+              @mouseenter="actressActive=item.name"
+              @mouseleave="actressActive=''"
         >
           {{ item.name }}
           <span class="actress-logo" v-if="actressActive === item.name">
@@ -87,8 +87,8 @@ const {data: isPlayer} = useRequest(get, {
   defaultParams: [APIUri.isPlayer.replace(":id", route.params.id.toString()), {}],
   formatResult: res => res.data
 })
-const {data: isCollect} = useRequest(get, {
-  defaultParams: [APIUri.isPlayer.replace(":id", route.params.id.toString()), {}],
+const {data: isCollect, run: runIsCollect} = useRequest(get, {
+  defaultParams: [APIUri.isCollect.replace(":id", route.params.id.toString()), {}],
   formatResult: res => res.data
 })
 const collect = async () => {
@@ -96,6 +96,7 @@ const collect = async () => {
   console.log(resp)
   if (resp.code === 200) {
     alert(resp.message)
+    runIsCollect(APIUri.isCollect.replace(":id", route.params.id.toString()), {})
   }
 }
 const unCollect = async () => {
@@ -103,6 +104,7 @@ const unCollect = async () => {
   console.log(resp)
   if (resp.code === 200) {
     alert(resp.message)
+    runIsCollect(APIUri.isCollect.replace(":id", route.params.id.toString()), {})
   }
 }
 const remove = async () => {
@@ -150,7 +152,7 @@ const cover = async () => {
   font-size: 14px;
 }
 
-.player-btn:hover {
+.player-btn:hover, .collect-btn:hover {
   cursor: pointer;
 }
 

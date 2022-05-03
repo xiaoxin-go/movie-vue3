@@ -1,9 +1,9 @@
 <template>
-  <carousel autoplay="3000" transition="800" :wrap-around="true">
+  <carousel :autoplay="3000" :transition="800" :wrap-around="true">
     <slide v-for="item in source" :key="item.id" @click="router.push(`/${path}/film/${item.id}`)">
       <img style="height: 100%;width: 100%" :src="`${ImagePath}/${item.name}.jpg`"
            :alt="item.title">
-      <span class="carousel-title">{{item.title}}</span>
+<!--      <span class="carousel-title">{{item.title}}</span>-->
     </slide>
     <template #addons>
       <navigation/>

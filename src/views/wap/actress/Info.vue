@@ -13,6 +13,8 @@
         <button class="add" @click="addFilms">+</button>
         <button class="del" @click="remove">-</button>
       </p>
+      <button class="follow-btn" v-if="isFollow>0" @click="unFollow">- 取消关注</button>
+      <button class="follow-btn" v-else @click="follow">+ 关注</button>
     </div>
   </div>
 
@@ -61,6 +63,27 @@ const addFilms = async()=>{
     router.go(0)
   }else{
     alert(resp.message)
+  }
+}
+const {data: isFollow, run: runIsFollow} = useRequest(get, {
+  defaultParams: [APIUri.isFollow.replace(":id", route.params.id.toString()), {}],
+  formatResult: res => res.data
+})
+
+const follow = async () => {
+  let resp = await post(APIUri.follow.replace(":id", route.params.id.toString()), {})
+  console.log(resp)
+  if (resp.code === 200) {
+    alert(resp.message)
+    runIsFollow(APIUri.follow.replace(":id", route.params.id.toString()), {})
+  }
+}
+const unFollow = async () => {
+  let resp = await post(APIUri.unFollow.replace(":id", route.params.id.toString()), {})
+  console.log(resp)
+  if (resp.code === 200) {
+    alert(resp.message)
+    runIsFollow(APIUri.follow.replace(":id", route.params.id.toString()), {})
   }
 }
 
@@ -163,5 +186,15 @@ watch(() => store.state.scroll, (value) => {
 }
 .operator>.del{
   background: red;
+}
+.follow-btn{
+  float: right;
+  background: #fc4dab;
+  border: none;
+  color: #fff;
+  padding: 2px 8px;
+  border-radius: 2px;
+  margin-right: 10px;
+  margin-top: 3px;
 }
 </style>

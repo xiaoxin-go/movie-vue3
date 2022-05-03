@@ -57,8 +57,11 @@ const saveImage = async() =>{
 .images > span {
   display: inline-block;
   margin: 5px;
-  overflow: hidden;
   box-shadow: 0 1px 3px rgb(0 0 0 / 10%);
+  border: 5px solid #ffffff;
+}
+.images>span:hover{
+  cursor: pointer;
 }
 .images > span > img{
   height: 90px;

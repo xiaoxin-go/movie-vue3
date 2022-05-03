@@ -1,16 +1,16 @@
 <template>
-  <div class="search">
-    <div>
-      <input type="text" v-model="search">
-      <button @click="onSearch">搜索</button>
-      <button @click="create">添加</button>
-    </div>
-  </div>
-  <div style="margin: 5px 8px 0 10px" v-if="CarouselList?.length > 0">
-    <FilmCarousel style="width: 100%" :source="CarouselList" path="wap"></FilmCarousel>
-  </div>
+<!--  <div class="search">-->
+<!--    <div>-->
+<!--      <input type="text" v-model="search">-->
+<!--      <button @click="onSearch">搜索</button>-->
+<!--      <button @click="create">添加</button>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--  <div style="margin: 5px 8px 0 10px">-->
+<!--    <FilmCarousel style="width: 600px" :source="CarouselList" path="pc"></FilmCarousel>-->
+<!--  </div>-->
   <div class="film-body">
-    <div class="film-item" v-for="item in filmList" :key="item" @click="router.push(`/wap/film/${item.id}`)">
+    <div class="film-item" v-for="item in filmList" :key="item" @click="router.push(`/pc/film/${item.id}`)">
       <div class="film-image">
         <img :src="`${LogoPath}/${item.name}.jpg`"/>
       </div>
@@ -19,16 +19,27 @@
       </div>
     </div>
   </div>
+  <div id="pagination">
+    <v-pagination
+        v-model="pagination.page"
+        :pages="pages"
+        :range-size="1"
+        active-color="#DCEDFF"
+        @update:modelValue="updateHandler"
+    />
+  </div>
 </template>
 
 <script lang="ts" setup>
 import FilmCarousel from "@/components/FilmCarousel.vue";
 import {APIUri, list, post} from "@/api";
-import {onMounted, reactive, ref, watch} from "vue";
+import {onMounted, reactive, ref, watch, computed} from "vue";
 import {useRouter} from "vue-router";
 import {useRequest} from "vue-request";
 import {LogoPath} from '@/api';
 import store from "@/store";
+import VPagination from "@hennge/vue3-pagination";
+import "@hennge/vue3-pagination/dist/vue3-pagination.css";
 
 const router = useRouter()
 
@@ -56,20 +67,26 @@ const create = async() =>{
 
 const pagination = reactive({
   page: 1,
-  page_size: 12,
+  page_size: 24,
   total: 0,
 })
 
+const pages = computed(()=>{
+  return Math.ceil(pagination.total/pagination.page_size)
+})
+
 const getFilm = async () => {
-  let resp = await list(APIUri.film, {...pagination, search: search.value});
+  let resp = await list(APIUri.userCollect, {...pagination, search: search.value});
   pagination.total = resp.data.total
-  resp.data.data_list.map((item: any) => {
-    filmList.value.push(item)
-  })
+  filmList.value = resp.data.data_list
 }
 const onSearch = () => {
   filmList.value = []
   pagination.page = 1
+  getFilm()
+}
+const updateHandler = (page: any) =>{
+  pagination.page = page
   getFilm()
 }
 watch(() => store.state.scroll, (value) => {
@@ -77,6 +94,10 @@ watch(() => store.state.scroll, (value) => {
     return
   }
   pagination.page += 1
+  getFilm()
+})
+watch(() => store.state.search, (value) => {
+  search.value = value
   getFilm()
 })
 
@@ -95,6 +116,7 @@ watch(() => store.state.scroll, (value) => {
   display: inline-block;
   height: 36px;
   line-height: 36px;
+  margin-top: 12px;
   border: none;
   color: #ef4f87;
   font-size: 14px;
@@ -133,14 +155,13 @@ watch(() => store.state.scroll, (value) => {
 }
 
 .film-body {
-  height: 300px;
   margin-top: 10px;
 }
 
 .film-item {
   display: inline-block;
-  width: 31%;
-  margin: 3px;
+  width: 190px;
+  margin: 5px;
   overflow: hidden;
   background: rgba(255, 255, 255);
   box-shadow: 0 1px 3px rgb(255 255 255 / 10%);
@@ -148,23 +169,29 @@ watch(() => store.state.scroll, (value) => {
 }
 .film-image{
   overflow: hidden;
-  margin: 3px 3px -2px 3px;
+  margin: 5px 5px -2px 5px;
+}
+.film-image:hover{
+  cursor: pointer;
 }
 
 .film-image > img {
-  height: 180px;
+  height: 256px;
 }
 
 .film-info {
   text-align: left;
-  font-size: 12px;
+  font-size: 13px;
   margin-bottom: 2px;
-  padding: 0 3px;
+  padding: 0 5px;
   color: coral;
 }
 
 .film-info > div {
   white-space: nowrap;
   overflow: hidden;
+}
+#pagination{
+  margin-top: 10px;
 }
 </style>

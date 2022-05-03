@@ -41,7 +41,7 @@ onMounted(() => {
 const search = ref("")
 
 const {data: CarouselList} = useRequest(list, {
-  defaultParams: [APIUri.film, {page: 1, page_size: 6}],
+  defaultParams: [APIUri.userCollect, {page: 1, page_size: 6}],
   formatResult: res => res.data.data_list
 })
 const create = async() =>{
@@ -61,7 +61,7 @@ const pagination = reactive({
 })
 
 const getFilm = async () => {
-  let resp = await list(APIUri.film, {...pagination, search: search.value});
+  let resp = await list(APIUri.userCollect, {...pagination, search: search.value});
   pagination.total = resp.data.total
   resp.data.data_list.map((item: any) => {
     filmList.value.push(item)
