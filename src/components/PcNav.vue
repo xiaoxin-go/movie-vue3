@@ -108,6 +108,7 @@ const navList = [
   {title: "电影", url: "/film"},
   {title: "演员", url: "/actress"},
   {title: "类别", url: "/genre"},
+  {title: "可播放", url: "/player"},
 ]
 </script>
 

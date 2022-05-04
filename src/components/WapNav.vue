@@ -34,7 +34,7 @@
     <p><input v-model="userData.password" type="password"></p>
     <p><button class="login-submit" @click="register">submit</button></p>
   </div>
-  <div style="position: fixed;bottom: 200px; color: #fff;font-size: 18px;z-index: 1000"> {{bottom}}</div>
+  <div style="position: fixed;top: 200px; color: #fff;font-size: 18px;z-index: 1000"> {{bottom}}</div>
 </template>
 
 <script lang="ts" setup>
@@ -55,6 +55,7 @@ const navList = [
   {title: "电影", url: "/film"},
   {title: "演员", url: "/actress"},
   {title: "类别", url: "/genre"},
+  {title: "可播放", url: "/player"},
 ]
 
 import store from "@/store";

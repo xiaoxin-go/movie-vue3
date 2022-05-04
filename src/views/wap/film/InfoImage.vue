@@ -8,13 +8,17 @@
         <img :src="`${ImagePath}/${item.name}-simple.jpg`" class="view-box">
       </photo-consumer>
     </photo-provider>
+    <button @click="saveImage">save</button>
   </div>
 </template>
 
 <script lang="ts" setup>
 import {defineProps, ref} from "vue";
 import {useRequest} from "vue-request";
-import {APIUri, get, ImagePath} from "@/api";
+import {APIUri, get, ImagePath, put} from "@/api";
+import {useRoute} from "vue-router";
+
+const route = useRoute()
 
 const props = defineProps({
   filmId: Number
@@ -23,7 +27,10 @@ const {data: images} = useRequest(get, {
   defaultParams: [APIUri.filmImage, {film_id: props.filmId}],
   formatResult: res => res.data.data_list
 })
-
+const saveImage = async() =>{
+  let resp = await put(APIUri.saveFilmImage.replace(":id", route.params.id.toString()), {})
+  alert(resp.message)
+}
 </script>
 
 <style scoped>

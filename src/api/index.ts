@@ -11,6 +11,7 @@ export const APIUri = {
     filmImage: "/film/image",
     filmLink: "/film/link",
     filmLike: "/film/:id/like",
+    filmPlayer: "/film/player",
     filmCover: "/film/:id/cover",
     addFilmLink: "/film/:id/link",
     addFilmImage: "/film/:id/image",

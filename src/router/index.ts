@@ -13,6 +13,7 @@ const routes: Array<RouteRecordRaw> = [
 
   {path: "/wap/collect", component: () => import("@/views/wap/film/Collect.vue"), name: "collect"},
   {path: "/wap/follow", component: () => import("@/views/wap/actress/Follow.vue"), name: "follow"},
+  {path: "/wap/player", component: () => import("@/views/wap/film/Play.vue"), name: "play"},
 
   {path: "/pc/film", component: () => import("@/views/pc/film/Film.vue"), name: "pcFilm"},
   {path: "/pc/film/:id", component: () => import("@/views/pc/film/Info.vue"), name: "pcFilmInfo"},
@@ -26,6 +27,7 @@ const routes: Array<RouteRecordRaw> = [
 
   {path: "/pc/collect", component: () => import("@/views/pc/film/Collect.vue"), name: "pcCollect"},
   {path: "/pc/follow", component: () => import("@/views/pc/actress/Follow.vue"), name: "pcFollow"},
+  {path: "/pc/player", component: () => import("@/views/pc/film/Play.vue"), name: "pcPlay"},
 
   {path: "/test", component: ()=>import("@/views/Test.vue"), name: "test"}
 ]
