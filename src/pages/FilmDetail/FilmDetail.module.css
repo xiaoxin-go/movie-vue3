@@ -1,0 +1,48 @@
+.container {
+    width: 100%;
+    padding: 0 10% 20px 10%;
+}
+.head{
+    display: flex;
+    flex-direction: row;
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* 浮出效果的阴影 */
+    transition: box-shadow 0.3s ease-in-out; /* 平滑过渡效果 */
+    padding: 15px;
+}
+.logo{
+    padding-right: 20px;
+    border-right: 1px solid #ddd;
+    height: 450px;
+}
+.info{
+    margin-left: 10px;
+    font-size: 14px;
+}
+.label{
+    font-weight: bold;
+}
+.links{
+    background: #fff;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* 浮出效果的阴影 */
+    transition: box-shadow 0.3s ease-in-out; /* 平滑过渡效果 */
+    font-size: 12px;
+}
+.link,.image{
+    margin-top: 20px;
+}
+.images{
+}
+.imageItem{
+    height: 100px;
+    display: inline-block;
+    padding: 10px;
+    background: #fff;
+    margin: 8px;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* 浮出效果的阴影 */
+    transition: box-shadow 0.3s ease-in-out; /* 平滑过渡效果 */
+}
+.img{
+    height: 100%;
+    width: 100%;
+}
