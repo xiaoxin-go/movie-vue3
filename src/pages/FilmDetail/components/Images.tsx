@@ -37,7 +37,7 @@ export const Images: React.FC<{images: Image[]}> = ({images}) =>{
             })
         }
         {
-            images && <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth PaperProps={{
+            images?.length > 0 && <Dialog open={open} onClose={handleClose} maxWidth="md" fullWidth PaperProps={{
                 style: { backgroundColor: 'transparent', boxShadow: 'none' },
             }}>
                 <DialogContent style={{position: 'relative', backgroundColor: 'transparent'}}>
@@ -47,7 +47,7 @@ export const Images: React.FC<{images: Image[]}> = ({images}) =>{
                     >
                         <CloseIcon/>
                     </IconButton>
-                    <img src={require(`f:/static/images/big/${images[currentImageIndex].name}.jpg`)}
+                    <img src={images[currentImageIndex] && require(`f:/static/images/big/${images[currentImageIndex].name}.jpg`)}
                          alt={`Large view ${currentImageIndex + 1}`}
                          style={{height: "100%", cursor: 'pointer'}}
                     />

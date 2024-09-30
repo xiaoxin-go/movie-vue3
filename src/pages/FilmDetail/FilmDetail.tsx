@@ -29,7 +29,7 @@ export const FilmDetail: React.FC = () => {
                     <p><span className={styles.label}>發行日期:</span> {formatDate(data.release_date)}</p>
                     <p><span className={styles.label}>長度:</span> {data.length}</p>
                     <p><span className={styles.label}>演员</span></p>
-                    {data.actresses?.map((item: any) => <a href="">{item.name}</a>)}
+                    {data?.actresses?.length > 0 && data.actresses?.map((item: any) => <a href="">{item.name}</a>)}
                 </div>
             </div>
             <div className={styles.link}>

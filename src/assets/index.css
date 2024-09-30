@@ -42,9 +42,10 @@ html, body{
 }
 .film-item{
   width: 164px;
+  height: 300px;
   border: 1px solid #ddd;
   margin: 10px 10px;
-  background: #fff;
+  background: #FAFAFA;
   padding-bottom: 10px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.2); /* 浮出效果的阴影 */
   transition: box-shadow 0.3s ease-in-out; /* 平滑过渡效果 */
@@ -58,13 +59,14 @@ html, body{
   cursor: pointer;
 }
 .film-item-logo{
-  border-bottom: 1px solid #ddd;
+  border-bottom: 1px solid #f2f2f2;
   padding: 10px;
+  background: #fff;
 }
 .film-item-title{
   padding: 0 10px;
   margin: 5px 0;
-  height: 30px;
+  height: 33px;
   overflow: hidden;
   background: #fffefc;
   font-size: 12px;

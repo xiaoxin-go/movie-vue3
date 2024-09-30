@@ -1,5 +1,5 @@
 export interface Film{
     title: string;
     name: string;
-    date: string;
+    release_date: string;
 }
