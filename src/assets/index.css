@@ -40,7 +40,7 @@ html, body{
   flex-direction: row;
   flex-wrap: wrap;
 }
-.film-item{
+.film-item, .actress-item{
   width: 164px;
   height: 300px;
   border: 1px solid #ddd;
@@ -51,6 +51,9 @@ html, body{
   transition: box-shadow 0.3s ease-in-out; /* 平滑过渡效果 */
   overflow: hidden;
 }
+.actress-item{
+  height: 200px;
+}
 .film-body > i {
   width: 164px;
   margin:10px 16px;
@@ -58,10 +61,15 @@ html, body{
 .film-item:hover{
   cursor: pointer;
 }
-.film-item-logo{
+.film-item-logo, .actress-item-logo{
   border-bottom: 1px solid #f2f2f2;
   padding: 10px;
   background: #fff;
+}
+.actress-item-logo{
+  height: 150px;
+  overflow: hidden;
+  border-bottom: none;
 }
 .film-item-title{
   padding: 0 10px;
@@ -72,15 +80,18 @@ html, body{
   font-size: 12px;
   text-align: justify;
 }
-.film-item-logo>img{
+.film-item-logo>img, .actress-item-logo>img{
   height: 210px;
   position: relative;
   left: calc(100% - 100% - 168px);
   clip-path: inset(0 0 0 168px)
 }
-.film-item-sn{
+.film-item-sn, .actress-item-desc{
   padding: 0 10px;
   font-size: 12px;
+}
+.actress-item-desc{
+  margin-top: 5px;
 }
 .film-item-sn span{
   margin: 0 2px;

@@ -1,43 +1,44 @@
-import {Link, useNavigate} from "react-router-dom";
+import {Link} from "react-router-dom";
 import {Film} from "./film.types";
 import React from "react";
 import {formatDate} from "../../utils/date";
+import {useRequestPagination} from "../../utils/http";
+import {ApiUri} from "../../api";
+import Loading from "../../components/Loading";
 
 
-export const FilmList: React.FC<{ films: Film[] }> = ({films}) => {
-    const navigate = useNavigate()
-    const toDetail = (name: string) => {
-        navigate(`/film/${name}`)
-    }
-    return (
-        <div className={"film-body"}>
-            {
-                films.map((item, index) => {
-                    console.log("imagePath---->", item.name)
-                        const imagePath = require(`f:/static/images/logo/${item.name.toUpperCase()}.jpg`)
-                        // const imagePath = require(`f:/static/images/logo/ABF-073.jpg`)
-                    console.log("imagePath---->", imagePath)
-                        return <div key={index} className={"film-item"}
-                                    onClick={() => toDetail(item.name)}>
-                            <Link to={`/film/${item.name}`} style={{textDecorationLine: "none", color: "black"}}>
-                                <div className={"film-item-logo"}>
-                                    <img src={imagePath} alt=""/>
-                                </div>
-                                <div>
-                                    <div className={"film-item-title"}>
-                                        {item.title}
-                                    </div>
-                                    <div className={"film-item-sn"}>
-                                        <span>{item.name}</span>/<span>{formatDate(item.release_date)}</span>
-                                    </div>
-                                </div>
-                            </Link>
-
-                        </div>
-                    }
-                )
-            }
-            <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+const FilmItem: React.FC<{film: Film}> = ({film})=>{
+    return <Link to={`/film/${film.name}`} style={{textDecorationLine: "none", color: "black"}}>
+        <div className={"film-item-logo"}>
+            <img src={`/images/logo/${film.name}.jpg`} alt=""/>
         </div>
+        <div>
+            <div className={"film-item-title"}>
+                {film.title}
+            </div>
+            <div className={"film-item-sn"}>
+                <span>{film.name}</span>/<span>{formatDate(film.release_date)}</span>
+            </div>
+        </div>
+    </Link>
+}
+
+export const Films: React.FC = () => {
+    const [rows, getRows, loading, page, pageSize, count, changePage, changePageSize] = useRequestPagination(ApiUri.film.list)
+    return (
+        <>
+            <Loading loading={loading}></Loading>
+            <div className={"film-body"}>
+                {
+                    rows.map((item: Film, index: number) => {
+                            return <div key={index} className={"film-item"}>
+                                <FilmItem film={item}></FilmItem>
+                            </div>
+                        }
+                    )
+                }
+                <i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i>
+            </div>
+        </>
     )
 }

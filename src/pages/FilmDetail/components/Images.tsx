@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import {Image} from "../FilmDetail.types";
 import styles from "../FilmDetail.module.css";
 import {Dialog, DialogContent, IconButton} from "@mui/material";
@@ -28,10 +28,9 @@ export const Images: React.FC<{images: Image[]}> = ({images}) =>{
     return <div className={styles.images}>
         {
             images?.map((image, i) => {
-                const imagePath = require(`f:/static/images/big/${image.name}.jpg`)
                 return (
                     <div key={i} className={styles.imageItem}>
-                        <img className={styles.img} src={imagePath} alt="" onClick={()=>handleImageClick(i)}/>
+                        <img className={styles.img} src={`/images/big/${image.name}.jpg`} alt="" onClick={()=>handleImageClick(i)}/>
                     </div>
                 )
             })

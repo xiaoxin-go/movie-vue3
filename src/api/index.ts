@@ -4,5 +4,9 @@ export const ApiUri = {
     list: '/films',
     get: '/film',
     detail: '/film/detail'
+  },
+  actress: {
+    list: '/actresses',
+    detail: '/actress/detail',
   }
 }
