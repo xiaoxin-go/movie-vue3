@@ -7,7 +7,7 @@ const service = axios.create({
   // 公共接口
   baseURL: ApiUri.prefix,
   // 超时时间 单位是ms，这里设置了5s的超时时间
-  timeout: 5000,
+  timeout: 30000,
 });
 
 // 添加一个请求拦截器

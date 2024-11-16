@@ -1,0 +1,19 @@
+.logo{
+    padding-bottom: 10px;
+    background: #fff;
+    border-bottom: 1px solid #f2f2f2
+}
+.add{
+    position: absolute!important;
+    top: 90px;
+    left: 10px;
+    background: #00000055!important;
+    border-radius: 50%!important;
+    width: 64px;
+    height: 64px;
+    z-index: 100;
+    color: #ffffff!important;
+}
+.add:hover{
+    background: #00000033!important;
+}

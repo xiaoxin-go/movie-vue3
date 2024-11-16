@@ -30,7 +30,7 @@ export const Images: React.FC<{images: Image[]}> = ({images}) =>{
             images?.map((image, i) => {
                 return (
                     <div key={i} className={styles.imageItem}>
-                        <img className={styles.img} src={`/images/big/${image.name}.jpg`} alt="" onClick={()=>handleImageClick(i)}/>
+                        <img className={styles.img} src={`/images/small/${image.name}.jpg`} alt="" onClick={()=>handleImageClick(i)}/>
                     </div>
                 )
             })
@@ -46,7 +46,7 @@ export const Images: React.FC<{images: Image[]}> = ({images}) =>{
                     >
                         <CloseIcon/>
                     </IconButton>
-                    <img src={images[currentImageIndex] && require(`f:/static/images/big/${images[currentImageIndex].name}.jpg`)}
+                    <img src={`/images/big/${images[currentImageIndex].name}.jpg`}
                          alt={`Large view ${currentImageIndex + 1}`}
                          style={{height: "100%", cursor: 'pointer'}}
                     />

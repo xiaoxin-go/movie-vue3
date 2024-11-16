@@ -3,6 +3,7 @@ export const ApiUri = {
   film:{
     list: '/films',
     get: '/film',
+    create: '/film',
     detail: '/film/detail'
   },
   actress: {

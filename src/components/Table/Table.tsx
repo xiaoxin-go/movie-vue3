@@ -24,7 +24,7 @@ const StyledTableCell = styled(TableCell)(({ theme, width }) => ({
     },
     [`&.${tableCellClasses.body}`]: {
         fontSize: 12,
-        lineHeight: 0.8,
+        lineHeight: 0.5,
         width: width + 'px',
         whiteSpace: 'nowrap', // 不换行
         overflow: 'hidden', // 超出部分隐藏

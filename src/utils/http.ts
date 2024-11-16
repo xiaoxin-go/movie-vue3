@@ -149,7 +149,7 @@ export const useRequestPagination = (uri: string, defaultParams?: any) =>{
   const [loading, setLoading] = useState<boolean>(false)
   const [count, setCount] = useState<number>(0)
   const [page, setPage] = useState<number>(1)
-  const [pageSize, setPageSize] = useState<string>('10')
+  const [pageSize, setPageSize] = useState<string>('32')
   const [params, setParams] = useState<any>({})
 
   useEffect(()=>{

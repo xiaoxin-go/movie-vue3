@@ -7,7 +7,7 @@ import {formatDate} from "../../utils/date";
 import Loading from "../../components/Loading";
 import {Links} from "./components/Links";
 import {Images} from "./components/Images";
-
+import {Link} from "react-router-dom";
 
 export const FilmDetail: React.FC = () => {
     const { sn } = useParams<{ sn: string }>();
@@ -28,16 +28,20 @@ export const FilmDetail: React.FC = () => {
                     <p><span className={styles.label}>發行日期:</span> {formatDate(data.release_date)}</p>
                     <p><span className={styles.label}>長度:</span> {data.length}</p>
                     <p><span className={styles.label}>演员</span></p>
-                    {data?.actresses?.length > 0 && data.actresses?.map((item: any) => <span>{item.name}</span>)}
+                    {data?.actresses?.length > 0 && data.actresses?.map((item: any) =>
+                        <Link to={`/actress/${item.name}`} style={{textDecorationLine: "none", color: "black"}}>
+                            <span>{item.name}</span>
+                        </Link>
+                    )}
                 </div>
-            </div>
-            <div className={styles.link}>
-                <p>磁力连接</p>
-                <Links links={data.links}/>
             </div>
             <div className={styles.image}>
                 <p>样品图片</p>
                 <Images images={data.images}/>
+            </div>
+            <div className={styles.link}>
+                <p>磁力连接</p>
+                <Links links={data.links}/>
             </div>
         </div>
     )

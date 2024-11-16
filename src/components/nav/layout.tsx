@@ -24,16 +24,16 @@ export const Layout: React.FC = () => {
 
     return (
         <div className={"layout"}>
-            <AppBar component="nav">
+            <AppBar component="nav" sx={{ height: "50px"}}>
                 <Toolbar>
                     <Typography
                         variant="h6"
                         component="div"
-                        sx={{flexGrow: 1, display: {xs: 'none', sm: 'block'}}}
+                        sx={{flexGrow: 1, display: {xs: 'none', sm: 'block'}, height: "50px"}}
                     >
                         Movie
                     </Typography>
-                    <Box sx={{display: {xs: 'none', sm: 'block'}}}>
+                    <Box sx={{display: {xs: 'none', sm: 'block'}, height: "50px", color: "#777"}}>
                         {menus.map((item) => (
                             <Button key={item.key} sx={{color: '#fff'}} onClick={() => {
                                 changePath(item.key, item.path)
